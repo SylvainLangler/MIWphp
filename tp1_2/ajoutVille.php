@@ -18,6 +18,6 @@ if(isset($_POST['ville']) && isset($_POST['habitants'])){
    
 }
 
-header('Location: /exercices_php/country.php?country='.$_GET['country']);
+header('Location: ./country.php?country='.$_GET['country']);
 
 ?>

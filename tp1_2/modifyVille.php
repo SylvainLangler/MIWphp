@@ -24,6 +24,6 @@ if(isset($_POST['ville'])){
     $countryCodeQuery->closeCursor();
 }
 
-    header('Location: /exercices_php/country.php?country='.$countryCode);
+    header('Location: ./country.php?country='.$countryCode);
 
 ?>

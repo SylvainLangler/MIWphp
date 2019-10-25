@@ -22,7 +22,7 @@ include 'header.php';
 ?>
             <div class="row ml-2 mt-5">
                 <div class="col-lg-1">
-                    <a href="http://localhost:8080/exercices_php/tp2">
+                    <a href="./">
                     <button type="button" class="btn btn-dark">Retour</button>
                     </a>
                 </div>
