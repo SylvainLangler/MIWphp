@@ -7,6 +7,8 @@ $cities->execute(array($_GET['country']));
 
 $countries = $bdd->query('SELECT code FROM country');
 
+
+
 while($row = $countries->fetch()){
     if($row['code'] == $_GET['country']){
         $country = $bdd->prepare('SELECT name FROM country WHERE code= ?');
@@ -26,11 +28,21 @@ include 'header.php';
                     <button type="button" class="btn btn-dark">Retour</button>
                     </a>
                 </div>
+                
+                <?php
+                    if( isset( $_GET['Message'] ) && $_GET['Message'] != '' )
+                    {
+                        echo '<div class="col-lg-2" style="background-color:green; border-radius: 5px; text-align:center;">
+                                    <h1>'.$_GET['Message'].'</h1>
+                                </div>';
+                    }
+                ?>
+                
             </div>
             <div class="row mt-5">
                 <div class="col-lg-4 offset-lg-1">
                     <h5><?php if(isset($countryName)) echo $countryName ?></h5>
-                    <table class="tab" border="1px solid black">
+                    <table class="tab" border="1px">
                         <thead>
                             <tr>
                                 <td>Ville</td>
@@ -61,6 +73,17 @@ $cities->closeCursor();
                         Nom de la ville <input type="text" name="ville"/>
                         <br>
                         Nombre d'habitants <input class="mt-2" type="text" name="habitants"/>
+                        <br>
+                        <input class="mt-2 btn btn-success" type="submit" value="valider">
+                    </form>
+                    <h5 class="mt-3">Formulaire d'ajout d'images</h5>
+                    <form class="mt-5" action="ajoutPhoto.php?country=<?php echo $_GET['country']?>" method="post" enctype="multipart/form-data">
+                        Nom <input type="text" name="nom"/>
+                        <br>
+                        Description <textarea class="mt-2" type="text" name="description" id="description">
+                        </textarea>
+                        <br>
+                        Photo : <input type="file" name="photo">
                         <br>
                         <input class="mt-2 btn btn-success" type="submit" value="valider">
                     </form>

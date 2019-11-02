@@ -56,19 +56,40 @@ function getImgSize($fichier, $dossier){
     return $imgsize;
 }
 
-function createThumbnail($fichier, $dossier, $imgsize, $source_gd_image){
-    //création de la miniature, en concervant le ratio.
-    //on fixe une largeur (width)
-    $thumbnailWitdh = 150;
+function createThumbnail($fichier, $dossier, $imgsize, $source_gd_image, $targetWidth, $targetHeight = null){
+    $width = $imgsize[0];
+    $height = $imgsize[1];
 
-    //on calcul la hauteur
-    $thumbnailHeight = floor($thumbnailWitdh*$imgsize[1]/$imgsize[0]);
+    // maintain aspect ratio when no height set
+    if ($targetHeight == null) {
 
-    //on créé une image "vide" (une image noire)
-    $thumbnail = imagecreatetruecolor($thumbnailWitdh, $thumbnailHeight);
+        // get width to height ratio
+        $ratio = $width / $height;
 
-    //on créé une copie de notre image source
-    imagecopyresampled($thumbnail, $source_gd_image, 0, 0, 0, 0, $thumbnailWitdh, $thumbnailHeight, $imgsize[0], $imgsize[1]);
+        // if is portrait
+        // use ratio to scale height to fit in square
+        if ($width > $height) {
+            $targetHeight = floor($targetWidth / $ratio);
+        }
+        // if is landscape
+        // use ratio to scale width to fit in square
+        else {
+            $targetHeight = $targetWidth;
+            $targetWidth = floor($targetWidth * $ratio);
+        }
+    }
+
+    // create duplicate image based on calculated target size
+    $thumbnail = imagecreatetruecolor($targetWidth, $targetHeight);
+
+    // copy entire source image to duplicate image and resize
+    imagecopyresampled(
+        $thumbnail,
+        $source_gd_image,
+        0, 0, 0, 0,
+        $targetWidth, $targetHeight,
+        $width, $height
+    );
 
     //imagecrop($thumbnail, ['x' => 0, 'y' => 0, 'width' => $thumbnailWitdh, 'height' => $thumbnailHeight]);
     //et on en fait un fichier jpeg avec une qualité de 90%
@@ -78,13 +99,15 @@ function createThumbnail($fichier, $dossier, $imgsize, $source_gd_image){
     imagedestroy($source_gd_image);
 
     imagedestroy($thumbnail);
+
+    
 }
 
 $ext = getExtension($fichier);
 $source_gd_image = createImage($ext, $fichier, $dossier);
 $imgSize = getImgSize($fichier, $dossier);
 
-createThumbnail($fichier, $dossier, $imgSize, $source_gd_image);
+createThumbnail($fichier, $dossier, $imgSize, $source_gd_image, 200);
 
 
 echo '<img src="'. $dossier.'thumb_'.$fichier.'" style="margin:50px">';

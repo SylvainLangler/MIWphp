@@ -21,7 +21,7 @@
 
             <div class="row ml-2 mt-5">
                 <div class="col-lg-1">
-                    <a href="http://localhost:8080/exercices_php/country.php?country=<?php echo $countryCode ?>">
+                    <a href="./country.php?country=<?php echo $countryCode ?>">
                         <button type="button" class="btn btn-dark">Retour</button>
                     </a>
                 </div>

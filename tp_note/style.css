@@ -1,0 +1,16 @@
+body{
+    background-color:#0b141e;
+    color:white;
+}
+
+table{
+    border-color:white;
+}
+
+.tab td{
+    padding:5px;
+}
+
+form{
+    margin:0 !important;
+}
