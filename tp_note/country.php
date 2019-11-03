@@ -33,8 +33,8 @@ include 'header.php';
                 <?php
                     if( isset( $_GET['Message'] ) && $_GET['Message'] != '' )
                     {
-                        echo '<div class="col-lg-2" style="background-color:black; border-radius: 5px; text-align:center;">
-                                    <h1>'.$_GET['Message'].'</h1>
+                        echo '<div class="col-lg-2" style="background-color:white; border-radius: 5px; text-align:center;">
+                                    <h1 style="color:black;">'.$_GET['Message'].'</h1>
                                 </div>';
                     }
                 ?>
