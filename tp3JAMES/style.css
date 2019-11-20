@@ -1,0 +1,47 @@
+/* Reset CSS */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+main{
+    background-image: url('./img/pere_noel.png');
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    height:600px;
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+input[type='email']{
+    border: 2px solid #8D8B8B;
+    border-radius: 5px 0px 0px 5px;
+    width: 200px;
+    padding: 15px;
+    align-self: center;
+}
+
+input[type='submit']{
+    width: 130px;
+    padding: 15px;
+    margin-top: 50px;
+    align-self: center;
+}
+
+.delivery_sent {
+    background-color: green;
+}
+
