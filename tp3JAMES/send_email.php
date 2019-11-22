@@ -14,6 +14,7 @@ $mail = new PHPMailer(true);
 try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->CharSet = 'UTF-8';
     //$mail->isSMTP();                                            // Send using SMTP
     $mail->Host = 'mail.websenso.net';                    // Set the SMTP server to send through
     $mail->SMTPAuth = true;                                   // Enable SMTP authentication
