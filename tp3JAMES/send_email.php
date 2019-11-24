@@ -25,7 +25,7 @@ try {
 
     //Recipients
     $mail->setFrom('miw@websenso.net', 'MIW Party');
-    $mail->addAddress('langlersylvain@gmail.com');     // Add a recipient
+    $mail->addAddress($_GET['mail']);     // Add a recipient
     //$mail->addCC('miw@websenso.net');
 
     // Attachments
@@ -34,7 +34,7 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'Invitation Christmas Party MIW';
     $mail->Body = file_get_contents('email/email_party.html');
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
