@@ -2,24 +2,48 @@
 
 class LivreController extends Controller{
 
-    public $livres = [
-        ['id'=>1, 'nom'=>'Nom du livre'],
-        ['id'=>2, 'nom'=>'Nom du livre 2'],
-        ['id'=>3, 'nom'=>'Nom du livre 3'],
-    ];
+    public function liste(){
 
-    public function index(){
-        $this->set(['livres'=>$this->livres]);
+        $livres = Livre::getAll();
 
-        $this->render('index');
+        $this->set(['livres'=>$livres]);
+
+        $this->render('liste');
     }
 
     public function detail(){
+        $id = (int)$_GET['id'];
 
-        $this->set(['livres'=>$this->livres]);
+        $livre = new Livre($id);
 
+        $this->set(['livre'=>$livre]);
         $this->render('detail');
+    }
 
+    public function ajouter(){
+        $this->render('ajouter');
+
+        
+    }
+
+    public function modifier(){
+        $this->render('modifier');
+
+    }
+
+    public function post(){
+        if(isset($_POST['nom'])){
+            $livre = new Livre();
+            $livre->nom = $_POST['nom'];
+            $livre->auteur = $_POST['auteur'];
+            $livre->resume = $_POST['resume'];
+            $livre->isbn = $_POST['ISBN'];
+            $livre->prix = $_POST['prix'];
+
+            $livre->create();
+
+            header('Location:'.ROOT.'/livre/liste');
+        }
     }
 
 }

@@ -1,5 +1,11 @@
 <?php
+
+define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
+// => /php/1/mvc/
+
 require_once './core/Controller.php';
+require_once './core/Model.php';
+require_once './model/Livre.php';
 
 $data = explode('/', $_GET['p']);
 

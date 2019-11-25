@@ -13,8 +13,9 @@ class AccueilController extends Controller {
             ['id'=>3, 'nom'=>'Nom du livre 3'],
         ];
 
+        $livre = ['id'=>3, 'nom'=>'Nom du livre 3'];
+
         $this->set(['livres'=>$livres]);
-        //$this->render('./view/accueil/index.php');
         $this->render('index');
 
     }

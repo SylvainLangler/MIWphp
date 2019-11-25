@@ -8,20 +8,13 @@ class Controller{
     }
 
     public function render($view){
+        $currentController = get_class($this);//AccueilController
+        $currentController = str_replace('Controller','', $currentController); //Accueil
+        $currentController = strtolower($currentController); //accueil
 
         extract($this->vars);
-
-
-        $controller = strtolower(explode('Controller',get_class($this))[0]);
-        
-        $file = './view/'.$controller.'/'.$view.'.php';
-
-        if(file_exists($file)){
-            include $file;
-        }
-        else{
-            die($file.' does not exist');
-        }
+        // ./view/accueil/index.php
+        include './view/'.$currentController.'/'.$view.'.php';
 
     }
 }
