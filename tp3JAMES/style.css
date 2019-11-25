@@ -8,8 +8,10 @@
   padding:0;
 }
 
+/* main container */
+
 main{
-    background-image: url('./img/pere_noel.png');
+    background-image: url('./email/imgmail/pere_noel.jpg');
     background-size: cover;
     background-position-x: center;
     background-repeat: no-repeat;
@@ -17,6 +19,8 @@ main{
     display: flex;
     justify-content: center;
 }
+
+/* form */
 
 form{
     display: flex;
@@ -29,19 +33,71 @@ form{
 input[type='email']{
     border: 2px solid #8D8B8B;
     border-radius: 5px 0px 0px 5px;
-    width: 200px;
-    padding: 15px;
+    width: 320px;
     align-self: center;
 }
 
 input[type='submit']{
-    width: 130px;
-    padding: 15px;
+    width: 250px;
     margin-top: 50px;
     align-self: center;
+    background-color:#C30078;
+    border:2px solid #C30078;
+    color:white;
+    border-radius: 0 5px 5px 0;
+    background-image: url('./img/vip.svg');
+    background-position-x: 170px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    text-align:justify;
+    cursor:pointer;
 }
 
-.delivery_sent {
-    background-color: green;
+input{
+    font-size:25px;
+    padding:25px;
+}
+
+
+/* page success */
+
+.success{
+    position:relative;
+    top:150px;
+    width:320px;
+    height:280px;
+    background: #FFFFFF80 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 32px;
+    background-image:url('./img/mail.svg');
+    background-position-x:center;
+    background-position-y:center;
+    background-repeat:no-repeat;
+    color:#C30078;
+}
+
+/* tablette et au dessus */
+
+@media screen and (min-width:768px){
+    form{
+        flex-direction: row;
+    }
+
+    input[type='submit']{
+        margin-top:0;
+        margin-left:15px;
+    }
+
+    input[type='email']{
+        width:400px;
+    }
+
+    main{
+        height:768px;
+    }
+
+    .success{
+        width:400px;
+    }
 }
 
