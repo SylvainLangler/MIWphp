@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang='FR'>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    </head>
-    <body>
-        <main>
-            <div id='resultat1'></div>
-            <div id='resultat2'></div>
-            <div id='resultat3'></div>
-        </main>
-    </body>
-    <script src="app.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <main>
+        <div id='resultat1'></div>
+        <div id='resultat2'></div>
+        <div id='resultat3'></div>
+        <div class="tp_produits">
+            <form>
+                <select name="categories" id="categories" onchange='ajaxJSON_produits()'>
+
+                </select>
+            </form>
+        </div>
+    </main>
+</body>
+<script src="app.js"></script>
+
 </html>
