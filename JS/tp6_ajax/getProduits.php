@@ -3,7 +3,7 @@
 try{
     $bdd = new PDO(
         // dns et dbname
-        'mysql:host=localhost;dbname=miw_js;charset=utf8',
+        'mysql:host=localhost;dbname=langler_sylvain;charset=utf8',
         // user
         'root',
         // mdp
