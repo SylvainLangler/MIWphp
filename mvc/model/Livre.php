@@ -19,7 +19,7 @@ class Livre extends Model {
             $this->nom = $data['nom'];
             $this->isbn = $data['isbn'];
             $this->resume = $data['resume'];
-            $this->auteur = $data['auteur'];
+            $this->auteur = $data['id_auteur'];
             $this->prix = $data['prix'];
         }
     }
