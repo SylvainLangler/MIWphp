@@ -6,6 +6,7 @@ define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 require_once './core/Controller.php';
 require_once './core/Model.php';
 require_once './model/Livre.php';
+require_once './model/Auteur.php';
 
 $data = explode('/', $_GET['p']);
 

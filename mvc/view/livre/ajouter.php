@@ -6,6 +6,7 @@
     </head>
     <body>
         <main>
+            <a href="<?php echo ROOT ?>livre/liste">< Retour</a>
             <h2>Ajouter un livre</h2>
             <form action="<?php echo ROOT ?>livre/post" method="post">
                 <label>Nom</label>
@@ -15,7 +16,13 @@
                 <label>Résume</label>
                 <input type="text" name="resume" id="resume">
                 <label>Auteur</label>
-                <input type="text" name="auteur" id="auteur">
+                <select name="auteur" id="auteur">
+                    <option value="">Choisir un auteur</option>
+                    <?php foreach($auteurs as $auteur){
+                        echo '<option value="'.$auteur['id'].'">'.$auteur['prenom'].' '.$auteur['nom'].'</option>';
+                    }
+                    ?>
+                </select>
                 <label>prix</label>
                 <input type="text" name="prix" id="prix">
                 <br>
@@ -28,5 +35,9 @@
 label{
     display: block;
     margin-top: 20px;
+}
+
+input[type="submit"]{
+    margin-top:20px;
 }
 </style>

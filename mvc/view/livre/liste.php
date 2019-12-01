@@ -1,3 +1,4 @@
+<a href="<?php echo ROOT ?>auteur/liste">< Retour</a>
 <h1>Livres</h1>
 <a class="btn-like add" href="<?php echo ROOT ?>livre/ajouter">+ Ajouter un livre</a>
 <table>
