@@ -2,7 +2,7 @@
 
 class Controller{
     public $vars = [];
-    public $layout = 'layout';
+    public $layout = 'base-layout';
 
     public function set($vars){
         $this->vars = array_merge($this->vars, $vars);

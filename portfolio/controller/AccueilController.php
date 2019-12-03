@@ -6,9 +6,10 @@ class AccueilController extends Controller {
         
         $this->set([
             'nom'=>Configuration::get('nom'),
-            'prenom'=>Configuration::get('prenom')
+            'prenom'=>Configuration::get('prenom'),
+            'job'=>utf8_encode(Configuration::get('job'))
         ]);
-        
+
         $this->render('index');
 
     }
