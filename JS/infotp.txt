@@ -1,0 +1,13 @@
+tous les livres dispo dans un tableau
+
+compteur oui = 0
+compteur non = 0
+
+pas de max? 
+
++9 < tab.length -> affiche les 9
+et return oui+9
+
+< 0 -> oui = 0
+
+compteur dans la boucle
