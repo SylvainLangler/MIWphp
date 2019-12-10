@@ -74,6 +74,7 @@ function affiche(xml, dispo, min, max){
     // tab_not_dispo 
     let tab_not_dispo = [];
 
+    // On remplit les tableaux
     for(let i = 0; i < items.length; i++){
 
         if(items[i].getElementsByTagName('disponible')[0].textContent == "oui"){
@@ -89,7 +90,16 @@ function affiche(xml, dispo, min, max){
 
     }
 
-    if(dispo  && tab_dispo.length < max){
+    // On affiche ou cache le bouton suivant 
+    if(max == Math.ceil(tab_dispo.length/10)*10){
+        document.getElementById('right').style.display = 'none';
+    }
+    else{
+        document.getElementById('right').style.display = 'initial';
+    }
+
+    // Si max est inférieur à la taille du tableau, max reçoit la taille du tableau
+    if(dispo && tab_dispo.length < max){
         max = tab_dispo.length;
     }
     
@@ -129,38 +139,60 @@ function affiche(xml, dispo, min, max){
             table.appendChild(ligne);
         }
     }
-
+    testDisplayPreviousImage();
     document.getElementById('biblio').appendChild(table);
 }
+
+let dispo = true;
 
 // à chaque fois que l'input est modifié, on récupère sa valeur et on affiche les livres en conséquence
 function verifInput(){
     if(document.getElementById('dispo').checked){
         document.getElementById('biblio').removeChild(document.getElementsByTagName('table')[0]);
-        affiche(xml, true, 0, 10);
+        dispo = true;
+        max = 10;
+        min = 0;
+        affiche(xml, dispo, min, max);
+        
     }
     else{
         document.getElementById('biblio').removeChild(document.getElementsByTagName('table')[0]);
-        affiche(xml, false, 0, 10);
+        dispo = false;
+        max = 10;
+        min = 0;
+        affiche(xml, dispo, min, max);
     }
 }
 
+// Fonction appelée sur le bouton next
 function next(){
     document.getElementById('biblio').removeChild(document.getElementsByTagName('table')[0]);
-    // j'ai mis true en brut donc ça va fonctionner pour les livres disponibles
-    affiche(xml, true, min+10, max+10);
+    affiche(xml, dispo, min+=10, max+=10);
 }
 
+// Fonction appelée sur le bouton prev
 function previous(){
-    /*
-    document.getElementById('biblio').removeChild(document.getElementsByTagName('table')[0]);
-    affiche(xml, true, min-10, max-10);
-    */
+    if(min-=10 < 0){
+        document.getElementById('biblio').removeChild(document.getElementsByTagName('table')[0]);
+        affiche(xml, dispo, min-=10, max-=10);
+    }
+}
+
+// Test si on doit afficher ou pas le bouton previous
+function testDisplayPreviousImage(){
+    if(min <= 0){
+        document.getElementById('left').style.display = 'none';
+    }
+    else{
+        document.getElementById('left').style.display = 'initial';
+    }
 }
 
 let min = 0;
 
 let max = 10;
+
+testDisplayPreviousImage();
 
 let xml = ajaxHTML();
 
