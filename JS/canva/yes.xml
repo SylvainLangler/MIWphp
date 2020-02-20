@@ -1,5 +1,0 @@
-<!ELEMENT adresse (particulier?, entreprise?)*>
-
-    <!ELEMENT particulier (identite, adresse)>
-
-    <!ELEMENT entreprise (raison, adresse)>
